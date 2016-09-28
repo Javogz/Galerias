@@ -38,6 +38,7 @@ public class frmUsuario extends javax.swing.JFrame {
         eUsuario = new javax.swing.JTextField();
         bCrear = new javax.swing.JButton();
         pUsuario = new javax.swing.JPasswordField();
+        bVer = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,6 +67,13 @@ public class frmUsuario extends javax.swing.JFrame {
             }
         });
 
+        bVer.setText("Ver");
+        bVer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bVerActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -89,7 +97,9 @@ public class frmUsuario extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(bCrear)
-                .addGap(38, 38, 38))
+                .addGap(18, 18, 18)
+                .addComponent(bVer)
+                .addGap(58, 58, 58))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,9 +116,11 @@ public class frmUsuario extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(l3)
                     .addComponent(eUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
-                .addComponent(bCrear)
-                .addGap(35, 35, 35))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bCrear)
+                    .addComponent(bVer))
+                .addGap(26, 26, 26))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -132,9 +144,9 @@ public class frmUsuario extends javax.swing.JFrame {
     private void bCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCrearActionPerformed
         String pass=String.copyValueOf(pUsuario.getPassword());
         datos.add(new Administrador(nUsuario.getText(), pass, eUsuario.getText()));
-        Administrador admin = new Administrador(nUsuario.getText(),pass,eUsuario.getText());
+        /*Administrador admin = new Administrador(nUsuario.getText(),pass,eUsuario.getText());
         JOptionPane.showMessageDialog(this, "Email: "+admin.getEmailUsuario()+
-                "\nNombre: "+admin.getNombreUsuario());
+                " // Nombre: "+admin.getNombreUsuario());*/
         //Clear
         eUsuario.setText("");
         nUsuario.setText("");
@@ -145,6 +157,15 @@ public class frmUsuario extends javax.swing.JFrame {
     private void eUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_eUsuarioActionPerformed
+
+    private void bVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bVerActionPerformed
+        String mensaje="Lista de Usuarios\n";
+        for (Administrador ver:datos) {
+            mensaje+="Email: "+ver.getEmailUsuario()+" // Nombre: "+ver.getNombreUsuario()+"\n";
+        }
+        JOptionPane.showMessageDialog(this, mensaje);
+        nUsuario.grabFocus();
+    }//GEN-LAST:event_bVerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -183,6 +204,7 @@ public class frmUsuario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bCrear;
+    private javax.swing.JButton bVer;
     private javax.swing.JTextField eUsuario;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel l1;
