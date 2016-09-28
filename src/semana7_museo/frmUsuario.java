@@ -5,6 +5,7 @@
  */
 package semana7_museo;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,7 +13,7 @@ import javax.swing.JOptionPane;
  * @author 19008082-k
  */
 public class frmUsuario extends javax.swing.JFrame {
-
+    ArrayList<Administrador> datos=new ArrayList<>();
     /**
      * Creates new form frmUsuario
      */
@@ -49,6 +50,12 @@ public class frmUsuario extends javax.swing.JFrame {
         nUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nUsuarioActionPerformed(evt);
+            }
+        });
+
+        eUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eUsuarioActionPerformed(evt);
             }
         });
 
@@ -124,9 +131,20 @@ public class frmUsuario extends javax.swing.JFrame {
 
     private void bCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCrearActionPerformed
         String pass=String.copyValueOf(pUsuario.getPassword());
+        datos.add(new Administrador(nUsuario.getText(), pass, eUsuario.getText()));
         Administrador admin = new Administrador(nUsuario.getText(),pass,eUsuario.getText());
-        JOptionPane.showMessageDialog(null, "Usuario Creado Correctamente!.");
+        JOptionPane.showMessageDialog(this, "Email: "+admin.getEmailUsuario()+
+                "\nNombre: "+admin.getNombreUsuario());
+        //Clear
+        eUsuario.setText("");
+        nUsuario.setText("");
+        pUsuario.setText("");
+        nUsuario.grabFocus();
     }//GEN-LAST:event_bCrearActionPerformed
+
+    private void eUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_eUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
