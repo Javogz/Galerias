@@ -143,6 +143,11 @@ public class frmUsuario extends javax.swing.JFrame {
 
     private void bCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCrearActionPerformed
         String pass=String.copyValueOf(pUsuario.getPassword());
+        if (pass.equals("")||eUsuario.equals("")||nUsuario.equals("")) {
+            JOptionPane.showMessageDialog(this, "Faltan datos");
+            nUsuario.grabFocus();
+        }
+        else{
         datos.add(new Administrador(nUsuario.getText(), pass, eUsuario.getText()));
         /*Administrador admin = new Administrador(nUsuario.getText(),pass,eUsuario.getText());
         JOptionPane.showMessageDialog(this, "Email: "+admin.getEmailUsuario()+
@@ -152,6 +157,7 @@ public class frmUsuario extends javax.swing.JFrame {
         nUsuario.setText("");
         pUsuario.setText("");
         nUsuario.grabFocus();
+        }
     }//GEN-LAST:event_bCrearActionPerformed
 
     private void eUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eUsuarioActionPerformed
